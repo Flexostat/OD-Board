@@ -5,11 +5,14 @@
  *  Author: soslab
  */ 
 #include "pwm.h"
+#include "EEMAP.h"
 #include <avr/io.h>
 #include <avr/interrupt.h>
+#include <avr/eeprom.h>
 
 volatile uint16_t millist;
 volatile uint16_t ust;
+volatile uint16_t us_p_int;
 
 //setup stir motor PWM
 //TODO: convert this to work with timer2
@@ -31,7 +34,10 @@ void pwm_init() {
 	High	High	Low 	Eighth step
 	High	High	High	Sixteenth step                                  */
 	/************************************************************************/
+	uint8_t stepmode = eeprom_read_byte(EE_ADDR_STEP);
+	stepmode = stepmode == 0xff ? 0 : stepmode &0x07;  //take default full steps, mask lower 3 bits
 	PORTC &= ~0x07; //PC0-PC2 low = full step
+	PORTC |= stepmode;
 	//PORTC |= 0x01; //half step
 	PORTD |= 0x04; //pull motor reset high
 	PORTD &= ~0x40; //pull motor enable low
@@ -45,7 +51,10 @@ void pwm_init() {
 	
 	//toggle on counter top/2  
 	//OCR2A = COUNTER_TOP/2;
-	OCR2A = COUNTER_TOP;
+	uint8_t ctop = eeprom_read_byte(EE_ADDR_COUNT);
+	ctop = (ctop>32 && ctop<=64) ? ctop : COUNTER_TOP;
+	OCR2A = ctop;
+	us_p_int = (COUNTER_TOP+1)*(256/8);
 	OCR2B = 0;
 	
 	TIMSK2 = 1<<OCIE2A; 
@@ -55,7 +64,7 @@ void pwm_init() {
 //one epoch is 2/STIR_SPEED seconds
 //takes roughly 120 cycles every US_PER_INT
 ISR (TIMER2_COMPA_vect) { 
-  ust += US_PER_INT;
+  ust += us_p_int;
   while (ust>1000) {
 	  ust-=1000;
 	  millist +=1;

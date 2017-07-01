@@ -19,12 +19,12 @@ void pwm_init();
 //pulses/sec = 8,000,000/256/2/COUNTER_TOP
 //RPM when in half step mode = (puleses/sec)/96*60
 //=> rpm = 9765.625/COUNTER_TOP
-////////////NOW COMPUTED AT BOOT TIME
+////////////NOW the default.  actual number in eeprom (if valid)
 #define COUNTER_TOP 32
 //interrupts second is:
 // 8,000,000/256/COUNTER_TOP
 
 ///////////NOW COMPUTED AT BOOT TIME
-#define US_PER_INT 1*(COUNTER_TOP+1)*(256/8)
+//#define US_PER_INT 1*(COUNTER_TOP+1)*(256/8)
 
 #endif /* PWM_H_ */
