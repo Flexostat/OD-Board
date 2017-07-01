@@ -59,7 +59,7 @@ void pwm_init() {
 ISR (TIMER2_COMPA_vect) { 
   epocht++;	
   ust += US_PER_INT;
-  if (ust>1000) {
+  while (ust>1000) {
 	  ust-=1000;
 	  millist +=1;
   }
@@ -67,8 +67,4 @@ ISR (TIMER2_COMPA_vect) {
 
 uint16_t millis() {
   return millist;
-}
-
-uint16_t epoch() {
-	return epocht;
 }

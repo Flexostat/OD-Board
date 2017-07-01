@@ -16,15 +16,7 @@
 #define INTEGRATION_TIME 2000  //2 sec
 #define OPEN_PV() PORTB |= (0x01<<1)
 #define CLOSE_PV() PORTB &= ~(0x01<<1)
-//good to about 1/2 second
-void pause(uint16_t duration) {
-  uint8_t d = duration/5;
-  uint8_t ts = epoch();
-  uint8_t t = ts;
-  while (((int8_t)(t-ts)) < d) {
-    t = epoch();
-  }
-}
+
 
 int main(void)
 { 
@@ -40,7 +32,7 @@ int main(void)
   sei();
   od_get_rx();
   od_get_tx();
-  uint16_t lastepoch = epoch();
+  uint16_t lastepoch = millis();
   
   while(1)
   {
