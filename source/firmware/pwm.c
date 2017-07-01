@@ -8,7 +8,6 @@
 #include <avr/io.h>
 #include <avr/interrupt.h>
 
-volatile uint16_t epocht;
 volatile uint16_t millist;
 volatile uint16_t ust;
 
@@ -50,14 +49,12 @@ void pwm_init() {
 	OCR2B = 0;
 	
 	TIMSK2 = 1<<OCIE2A; 
-	epocht = 0;
 	
 }
 
 //one epoch is 2/STIR_SPEED seconds
 //takes roughly 120 cycles every US_PER_INT
 ISR (TIMER2_COMPA_vect) { 
-  epocht++;	
   ust += US_PER_INT;
   while (ust>1000) {
 	  ust-=1000;

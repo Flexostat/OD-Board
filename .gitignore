@@ -1,1 +1,5 @@
 *.zip
+*.atsln
+*.cproj
+*.atsuo
+Debug\
