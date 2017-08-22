@@ -1,0 +1,12 @@
+Part/Designator,Manufacture Part Number,Quantity,notes
+C1,CC0805KKX7R8BB105,1,may substitute for any similar capacitor
+C2,TAJC476K016RNJ,1,may substitute for any similar capacitor
+ISP J5,P125-12A1BS116A1,2,"2x3 0.1"" header, male"
+J1,54602-908LF,1,
+J3,P125-1104A0BS116A1,1,"4pin 0.1"" header, male, on back side"
+J4,P125-1103A1BS116A1,1,"3pin 0.1"" header, male"
+Q3 Q4,CJ2302,2,
+R3,RC0603JR-074K7L,1,may substitute for any similar resistor
+U1,ATMEGA328P-AU,1,
+J6 J7,P125-1108A1BS116A1,2,"8pin 0.1"" header, female"
+LF1 LF2,TSL235R-LF,2,on back side
