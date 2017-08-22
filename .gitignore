@@ -2,4 +2,7 @@
 *.atsln
 *.cproj
 *.atsuo
-Debug\
+source\firmware\Debug
+source\firmware\Release
+source/firmware/Release
+source/firmware/Debug
