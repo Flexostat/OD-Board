@@ -8,5 +8,5 @@ J4,P125-1103A1BS116A1,1,"3pin 0.1"" header, male"
 Q3 Q4,CJ2302,2,
 R3,RC0603JR-074K7L,1,may substitute for any similar resistor
 U1,ATMEGA328P-AU,1,
-J6 J7,P125-1108A1BS116A1,2,"8pin 0.1"" header, female"
+J6 J7,F185-1108A1BSYC1,2,"8pin 0.1"" header, female"
 LF1 LF2,TSL235R-LF,2,on back side
