@@ -1,0 +1,5 @@
+(sym_lib_table
+  (lib (name pololu_a4988)(type Legacy)(uri ${KIPRJMOD}/lib/pololu_a4988.lib)(options "")(descr ""))
+  (lib (name TSL235r-lf)(type Legacy)(uri ${KIPRJMOD}/lib/TSL235r-lf.lib)(options "")(descr ""))
+  (lib (name legacy-symbols)(type Legacy)(uri ${KIPRJMOD}/lib/legacy-symbols.lib)(options "")(descr ""))
+)
