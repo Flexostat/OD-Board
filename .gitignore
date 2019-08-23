@@ -2,6 +2,12 @@
 *.atsln
 *.cproj
 *.atsuo
+#kicad temp files
+*-cache.lib
+*-bak
+fp-info-cache
+*.bck
+
 source\firmware\Debug
 source\firmware\Release
 source/firmware/Release
